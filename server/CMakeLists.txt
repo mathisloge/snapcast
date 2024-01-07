@@ -31,7 +31,7 @@ set(SERVER_SOURCES
     streamreader/metadata.cpp
     streamreader/process_stream.cpp)
 
-set(SERVER_LIBRARIES ${CMAKE_THREAD_LIBS_INIT} ${ATOMIC_LIBRARY} common)
+set(SERVER_LIBRARIES ${CMAKE_THREAD_LIBS_INIT} ${ATOMIC_LIBRARY} common spdlog::spdlog)
 
 set(SERVER_INCLUDE ${Boost_INCLUDE_DIR} ${CMAKE_SOURCE_DIR}/server
                    ${CMAKE_SOURCE_DIR})
@@ -106,7 +106,7 @@ if(ANDROID)
   target_link_libraries(libsnapserver.so ${SERVER_LIBRARIES} log)
 else()
   add_executable(snapserver ${SERVER_SOURCES})
-  target_link_libraries(snapserver ${SERVER_LIBRARIES})
+  target_link_libraries(snapserver ${SERVER_LIBRARIES} )
 
   install(
     TARGETS snapserver

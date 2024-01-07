@@ -318,6 +318,9 @@ else()
   add_compile_definitions(HAS_TREMOR)
 endif()
 
+find_package(fmt CONFIG REQUIRED)
+find_package(spdlog CONFIG REQUIRED)
+
 add_compile_definitions(BOOST_ERROR_CODE_HEADER_ONLY BOOST_ASIO_NO_TS_EXECUTORS)
 
 if(WIN32)
